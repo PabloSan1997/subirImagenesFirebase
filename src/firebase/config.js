@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 const firebaseConfig = {
   apiKey: "AIzaSyBa8Yb4EIkfGiyyqGgw-jv4R9i7x3mM_kM",
@@ -22,4 +22,9 @@ export async function subirArchivo(file) {
   });
   const hola = await getDownloadURL(storagref);
   return hola;
+}
+
+export async function borrar(texto){
+    const reference = ref(storage, `ejemplos/${texto}`);
+    await deleteObject(reference).then(()=>console.log("Imagen borrada con exito")).catch(()=>console.log("error al borrar"));
 }

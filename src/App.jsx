@@ -1,4 +1,4 @@
-import { subirArchivo } from "./firebase/config";
+import { borrar, subirArchivo } from "./firebase/config";
 import React from 'react';
 
 function App() {
@@ -16,7 +16,6 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-
   }
   return (
     <>
@@ -24,6 +23,7 @@ function App() {
         <input type="file" name="" id="" onChange={mandar} />
         <button>subir</button>
       </form>
+      <button onClick={()=>borrar("dd28d1ad-38eb-4905-820b-385eca9456bd")}>borrar</button>
       <h2>Ultima Imagen Subida</h2>
       <img src={imagen} alt="" />
     </>
